@@ -37,3 +37,17 @@ jobs:
 
       - name: Deploy Grafana
         run: kubectl apply -f k8s/grafana/
+
+      - name: Deploy Prometheus
+        run: kubectl apply -f k8s/monitoring/
+
+      - name: Deploy Monitoring Stack
+        run: |
+          kubectl apply -f k8s/monitoring/prometheus-configmap.yaml
+          kubectl apply -f k8s/monitoring/prometheus-deployment.yaml
+          kubectl apply -f k8s/monitoring/prometheus-service.yaml
+          kubectl apply -f k8s/monitoring/postgres-exporter.yaml
+          kubectl apply -f k8s/monitoring/grafana-datasources.yaml
+          kubectl apply -f k8s/monitoring/grafana-dashboard-provider.yaml
+
+

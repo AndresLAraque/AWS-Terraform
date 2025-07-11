@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-dashboard
+data:
+  example-dashboard.json: |
+    {
+      "__inputs": [],
+      "title": "Example PostgreSQL Dashboard",
+      "panels": [
+        {
+          "type": "graph",
+          "title": "Example Metric",
+          "targets": [
+            {
+              "expr": "pg_up",
+              "interval": "",
+              "legendFormat": "Up",
+              "refId": "A"
+            }
+          ]
+        }
+      ],
+      "schemaVersion": 18,
+      "version": 1
+    }

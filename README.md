@@ -1,13 +1,15 @@
 # EKS Terraform Project
 Este proyecto despliega una arquitectura distribuida de AWS EKS (Elastic Kubernetes Service) usando Terraform.
 
+![Deploy to EKS](https://github.com/AndresLAraque/AWS-Terraform/actions/workflows/deploy.yml/badge.svg)
+
 Este repositorio despliega:
 - Cluster EKS (infraestructura con Terraform)
 - PostgreSQL con base de datos `prueba` y almacenamiento persistente
 - pgAdmin conectado al clúster
 - Grafana para monitoreo
 
-## 📂 Estructura del proyecto
+## Estructura del proyecto
 - `main.tf` — Define los módulos `VPC` y `EKS` con versiones específicas.
 - `variables.tf` — Variables parametrizables para región, nombres, subredes, tipos de instancia, etc.
 - `outputs.tf` — Outputs clave del cluster EKS (ID, Endpoint, Región).
@@ -15,10 +17,18 @@ Este repositorio despliega:
 
 ## Despliegue automático
 
-Este proyecto usa **GitHub Actions** para desplegar en EKS al hacer `push` en la rama `main`.
+Este proyecto usa **GitHub Actions** para desplegar en EKS. 
+El pipeline se activa automáticamente en cada **push a `main`**. 
 
+**Las claves AWS (`AWS_ACCESS_KEY_ID` y `AWS_SECRET_ACCESS_KEY`) se guardan como _Repository Secrets_ en GitHub.**  
 
 ## 🚀 Pasos para usar
+
+Antes de empezar se debe clonar el repo:  
+```bash
+git clone https://github.com/AndresLAraque/AWS-Terraform.git
+
+Ajustar la configuración de terraform.tfvars con valores correctos.
 
 ### 1. Inicializar Terraform
 ```bash
