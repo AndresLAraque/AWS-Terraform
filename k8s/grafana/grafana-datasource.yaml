@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-datasources
+  labels:
+    grafana_datasource: "1"
+data:
+  datasources.yaml: |
+    apiVersion: 1
+    datasources:
+    - name: Postgres
+      type: postgres
+      access: proxy
+      isDefault: true
+      database: postgres
+      user: postgres
+      secureJsonData:
+        password: password  # <- Asegúrate que coincida con tu secret de Postgres
+      jsonData:
+        sslmode: "disable"
+        database: postgres
+        user: postgres
+        postgresVersion: 1500
+        timescaledb: false
+        tlsSkipVerify: true
+      url: postgres:5432
